@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import { Colors } from "@/constants/Colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Fonts } from "@/constants/Fonts";
+import { StatusBar } from "expo-status-bar";
 
 const order = () => {
   const [hasOrder, setHasOrder] = useState(false);
   return (
     <View style={styles.container}>
+      <StatusBar style="dark" />
       <View style={styles.segmentTop}>
         <View style={styles.iconContainer}>
           <MaterialCommunityIcons
@@ -20,9 +22,11 @@ const order = () => {
 
       <View style={styles.segmentBottom}>
         <View style={styles.internalBottom}>
-        <Text style={styles.textBig}>{`You haven't started an order yet`}</Text>
-        <Text style={styles.textSeperator}>{`···`}</Text>
-        <Text style={styles.textInstruct}>{`TAP MENU TO BEGIN ORDER`}</Text>
+          <Text
+            style={styles.textBig}
+          >{`You haven't started an order yet`}</Text>
+          <Text style={styles.textSeperator}>{`···`}</Text>
+          <Text style={styles.textInstruct}>{`TAP MENU TO BEGIN ORDER`}</Text>
         </View>
       </View>
     </View>
@@ -68,10 +72,10 @@ const styles = StyleSheet.create({
   },
   segmentBottom: {
     flex: 2,
-    backgroundColor: 'white',
+    backgroundColor: Colors.white,
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2},
-    shadowOpacity: .35,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.35,
     shadowRadius: 4,
     elevation: 4, // Elevation for Android (adds shadow to all sides)
   },

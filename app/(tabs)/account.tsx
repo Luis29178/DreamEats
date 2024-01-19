@@ -25,7 +25,7 @@ export default function account() {
         <View style={styles.btnContainer}>
           <Link href={'./'} asChild>
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.btnText}>Create DreamEats Account</Text>
+              <Text style={styles.btnText}>Join DreamEats</Text>
               <LinearGradient
                 colors={['transparent', 'rgba(255,255,255,0.125)']}
                 start={{ x: 0.5, y: 0.5 }}
