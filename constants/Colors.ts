@@ -6,10 +6,18 @@ const Colors = {
   iconLight:'#E2F5F7', // paleAqua
   textLight:'#E2F5F7', // paleAqua
 
-  almostBlack: '#01050c',
-  lightGray: '#eceef3',
-  grey: '#cfd1da',
-  darkGray: '#a3a9c0',
+  //greys
+  
+  lighterGray: '#eceef3',
+  lightGrey: '#cfd1da',
+  softGray: '#a3a9c0',
+  gray: '#71758D',
+  heavyGray: '#626473',
+  darkGray: '#484A5A',
+  darkerGrey: '#3D3F4D',
+  Black: '#01050c',
+
+
 
 
   //Purples
