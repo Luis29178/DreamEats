@@ -3,6 +3,8 @@ import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
 import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { Provider } from 'react-redux';
+import { store } from '@/constants/Redux/ReduxStore';
 import React from 'react';
 
 
@@ -41,10 +43,10 @@ export default function RootLayout() {
   }
 
   return (
-    <>
+    <Provider store={store}>
       <RootLayoutNav />
       <StatusBar style="dark" />
-    </>
+    </Provider>
 
 
   );
