@@ -11,7 +11,12 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 import { Colors } from "@/constants/Colors";
 
-const ScrollingCatagorySelector = () => {
+type propTypes = {
+    categoryBar: React.ReactNode[];
+
+};
+
+const ScrollingCatagorySelector = ({categoryBar}: propTypes) => {
   const [parentDimensions, setParentDimensions] = useState({
     width: 0,
     height: 0,
@@ -69,59 +74,15 @@ const ScrollingCatagorySelector = () => {
   return (
     <View style={styles.container}>
       <View style={styles.upperScrollView}>
-        <ScrollView horizontal>
-          <View
-            style={[
-              styles.upperItem,
-              { backgroundColor: Colors.brightLavender },
-            ]}
-          >
-            <TouchableOpacity
-              onPress={() => {
-                console.log(positionIndex, scrollPercentage);
-              }}
-            >
-              <Text>testing theshaping</Text>
-            </TouchableOpacity>
-          </View>
-          <View
-            style={[
-              styles.upperItem,
-              {
-                backgroundColor: Colors.canaryYellow,
-              },
-            ]}
-          >
-            <TouchableOpacity
-              onPress={() => {
-                console.log(positionIndex, scrollPercentage);
-              }}
-            >
-              <Text>testing theshaping</Text>
-            </TouchableOpacity>
-          </View>
-          <View
-            style={[
-              styles.upperItem,
-              {
-                backgroundColor: Colors.darkLavender,
-              },
-            ]}
-          >
-            <TouchableOpacity
-              onPress={() => {
-                console.log(positionIndex, scrollPercentage);
-              }}
-            >
-              <Text>testing theshaping</Text>
-            </TouchableOpacity>
-          </View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {categoryBar}
         </ScrollView>
       </View>
 
       <View style={styles.lowerScrollView} onLayout={onParentLayout}>
         <ScrollView
           horizontal
+          showsHorizontalScrollIndicator={false}
           onScroll={onScroll}
           onMomentumScrollEnd={onMomentumScrollEnd}
           scrollEventThrottle={16} // Adjust as needed for smoothness vs. performance
@@ -177,11 +138,10 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   upperScrollView: {
-    height: 40,
+    height: 50,
     backgroundColor: Colors.white,
+    paddingHorizontal: 5,
+    paddingVertical: 5,
   },
-  upperItem: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
+
 });
