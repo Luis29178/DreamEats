@@ -12,40 +12,62 @@ import React, { useEffect, useRef, useState } from "react";
 import { Colors } from "@/constants/Colors";
 
 type propTypes = {
-    categoryBar: React.ReactNode[];
-
+  categoryBar: React.ReactNode[];
+  contentView: React.ReactNode[];
+  indexStateSelector: React.Dispatch<React.SetStateAction<number>>;
+  selectedIndex: number;
+  parentDimensions: {
+    width: number;
+    height: number;
+  };
+  setParentDimensions: React.Dispatch<
+    React.SetStateAction<{
+      width: number;
+      height: number;
+    }>
+  >;
+  scrollPercentage?: number;
+  setScrollPercentage?: React.Dispatch<React.SetStateAction<number>>;
+  positionIndex?: number;
+  setPositionIndex?: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const ScrollingCatagorySelector = ({categoryBar}: propTypes) => {
-  const [parentDimensions, setParentDimensions] = useState({
-    width: 0,
-    height: 0,
-  });
+const ScrollingCatagorySelector = ({
+  categoryBar,
+  contentView,
+  selectedIndex,
+  indexStateSelector,
+  parentDimensions,
+  setParentDimensions,
+  scrollPercentage,
+  setScrollPercentage,
+  positionIndex,
+  setPositionIndex,
+}: propTypes) => {
   const scrollViewRef = useRef<ScrollView>(null);
-  const [scrollPercentage, setScrollPercentage] = useState(0);
-  const [positionIndex, setPositionIndex] = useState(0);
+
+  useEffect(() => {
+    const position = selectedIndex * parentDimensions.width;
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({ x: position, animated: true });
+    }
+  }, [selectedIndex]);
 
   // Function to capture the dimensions of the parent View
   const onParentLayout = (event: LayoutChangeEvent) => {
     const { width, height } = event.nativeEvent.layout;
-    console.log(width, height);
     setParentDimensions({ width, height });
   };
-
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const scrollX = event.nativeEvent.contentOffset.x;
     const width = parentDimensions.width;
     const position = Math.floor(scrollX / width); // Current page index
     const offset = scrollX - position * width; // Offset from the start of the current page
     const currentScrollPercentage = offset / width;
-
-    setScrollPercentage(currentScrollPercentage);
-    console.log(
-      currentScrollPercentage.toFixed(2),
-      scrollPercentage.toFixed(2)
-    );
+    setScrollPercentage != undefined
+      ? setScrollPercentage(currentScrollPercentage)
+      : {};
   };
-
   const onMomentumScrollEnd = (
     event: NativeSyntheticEvent<NativeScrollEvent>
   ) => {
@@ -55,9 +77,8 @@ const ScrollingCatagorySelector = ({categoryBar}: propTypes) => {
     // Threshold is 50% of the view width
     const halfWidth = width / 2;
     const position = Math.floor(scrollX / width);
-
-    console.log(position);
-    setPositionIndex(position);
+    setPositionIndex !== undefined ? setPositionIndex(position) : {};
+    indexStateSelector(position);
 
     if (scrollX > position * width + halfWidth) {
       // Scroll to next view
@@ -89,37 +110,7 @@ const ScrollingCatagorySelector = ({categoryBar}: propTypes) => {
           ref={scrollViewRef}
           pagingEnabled={true}
         >
-          <View
-            style={{
-              width: parentDimensions.width,
-              height: parentDimensions.height,
-              backgroundColor: Colors.brightLavender,
-            }}
-          >
-            <TouchableOpacity
-              style={{
-                height: parentDimensions.height,
-                width: parentDimensions.width,
-              }}
-              onPress={() => {
-                console.log(positionIndex, scrollPercentage);
-              }}
-            />
-          </View>
-          <View
-            style={{
-              width: parentDimensions.width,
-              height: parentDimensions.height,
-              backgroundColor: Colors.canaryYellow,
-            }}
-          />
-          <View
-            style={{
-              width: parentDimensions.width,
-              height: parentDimensions.height,
-              backgroundColor: Colors.darkLavender,
-            }}
-          />
+          {contentView}
         </ScrollView>
       </View>
     </View>
@@ -138,10 +129,20 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   upperScrollView: {
+    zIndex: 9001,
     height: 50,
     backgroundColor: Colors.white,
     paddingHorizontal: 5,
     paddingVertical: 5,
-  },
 
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 2,
+
+    elevation: 1,
+  },
 });
