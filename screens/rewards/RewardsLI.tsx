@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import ScrollingCatagorySelector from '@/components/ScrollingCatagorySelector'
 
 const RewardsLI = () => {
   return (
-    <View>
-      <Text>RewardsLI</Text>
+    <View style={{flex:1}}>
+      <ScrollingCatagorySelector/>
     </View>
   )
 }

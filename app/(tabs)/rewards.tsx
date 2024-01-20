@@ -19,11 +19,7 @@ const rewards = () => {
     dispatch(LogIn());
   };
 
-  return isLoggedIn ? (
-    <RewardsLI></RewardsLI>
-  ) : (
-    <RewardsLO handleLogIn={handleLogIn}></RewardsLO>
-  );
+  return isLoggedIn ? <RewardsLI /> : <RewardsLO handleLogIn={handleLogIn} />;
 };
 
 export default rewards;
