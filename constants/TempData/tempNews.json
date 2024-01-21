@@ -1,0 +1,19 @@
+{
+    "news": [
+        {
+            "name": "Block A",
+            "description": "This is the first block, containing important information.",
+            "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fnulights.com%2Fblogs%2Fparty-preparation%2Fdisco-theme-party&psig=AOvVaw1Iou8nWEKXO4R5b26QRnUh&ust=1705955152410000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCOin4Z2q74MDFQAAAAAdAAAAABAD"
+        },
+        {
+            "name": "Block B",
+            "description": "This is the second block, with a different set of data.",
+            "image": ""
+        },
+        {
+            "name": "Block C",
+            "description": "The third block, featuring unique insights.",
+            "image": ""
+        }
+    ]
+}

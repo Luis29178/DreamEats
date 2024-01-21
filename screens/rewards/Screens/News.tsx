@@ -5,25 +5,59 @@ import {
   View,
   Image,
   TouchableOpacity,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Colors } from "@/constants/Colors";
 import { Fonts } from "@/constants/Fonts";
 import { Link } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
+import { news } from "@/constants/TempData/tempNews.json";
 
 type propTypes = {
   style: {};
 };
 
 const News = ({ style }: propTypes) => {
+  const [scrollY, setScrollY] = useState(0);
+  const [isTouching, setIsTouching] = useState(false);
+
+  useEffect(() => {
+    if (isTouching && scrollY < 0) {
+      console.log("overScroll-up");
+    }
+  }, [scrollY]);
+
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const currentScrollY = event.nativeEvent.contentOffset.y;
+    const contentHeight = event.nativeEvent.contentSize.height;
+    const scrollViewHeight = event.nativeEvent.layoutMeasurement.height;
+
+    setScrollY(currentScrollY);
+
+    if (isTouching && currentScrollY + scrollViewHeight >= contentHeight) {
+      console.log("overScroll-down");
+    }
+  };
+
+  const handleTouchStart = () => setIsTouching(true);
+  const handleTouchEnd = () => setIsTouching(false);
+
   return (
     <View style={style}>
-      <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={styles.scrollView}
+        onScroll={handleScroll}
+        scrollEventThrottle={16}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <View style={styles.event}>
           <View style={styles.eventInner}>
             <View style={styles.eventTitleContainer}>
-              <Text style={styles.eventTitle}>{`Latest Events`}</Text>
+              <Text style={styles.eventTitle}>{`Latest Event`}</Text>
               <Text style={styles.eventSpacer}>{`···`}</Text>
               <Text style={styles.eventName}>{`Drip The Runway`}</Text>
               <Text
@@ -42,7 +76,7 @@ const News = ({ style }: propTypes) => {
   Come with us as we take you on a journey to explore the universe and look for a new planet. What danger awaits us? What is lurking in the great beyond? Is there life on another planet? On our quest, we will be fashionable as space becomes our new runway all the while trying to ensure the survival of our species. There are so many questions that need to be answered. Will we find a new Earth? Are there aliens on this planet? Or are we now the aliens?`}
               </Text>
 
-              <Link href={"./"} asChild>
+              <Link href={"https://dreamcityorlando.com"} asChild>
                 <TouchableOpacity style={styles.infoButton}>
                   <Text style={styles.btnText}>Learn More About Events</Text>
                   <LinearGradient
@@ -57,9 +91,34 @@ const News = ({ style }: propTypes) => {
           </View>
         </View>
         <View style={styles.additionalNews}>
+          {news.map((data, index) => {
+            return (
+              <View
+                key={`${data.name}-${index}`}
+                style={[
+                  styles.addNewsContainer,
+                  index % 2 !== 0
+                    ? { borderColor: Colors.primary }
+                    : { borderColor: Colors.lavenderBlue },
+                ]}
+              >
+                <View style={styles.newsInner}>
+                  <Text style={styles.addTitle}>{`${data.name}`}</Text>
 
-
+                  {data.image !== "" ? (
+                    <Image style={styles.addImg} />
+                  ) : (
+                    <Text style={styles.addSpacer}>{`···`}</Text>
+                  )}
+                  <Text
+                    style={styles.addDescription}
+                  >{`${data.description}`}</Text>
+                </View>
+              </View>
+            );
+          })}
         </View>
+        <View style={{ height: 100 }} />
       </ScrollView>
     </View>
   );
@@ -68,15 +127,47 @@ const News = ({ style }: propTypes) => {
 export default News;
 
 const styles = StyleSheet.create({
-  scrollView: {
-    flex: 1,
-  },
+  scrollView: {},
   event: {
     width: "100%",
     borderLeftWidth: 5,
     borderRightWidth: 5,
     borderColor: Colors.primary,
   },
+  addNewsContainer: {
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+  },
+  addSpacer: {
+    textAlign: "center",
+    fontSize: 36,
+    fontFamily: Fonts.title,
+    color: Colors.heavyGray,
+  },
+  addTitle: {
+    fontSize: 22,
+    fontFamily: Fonts.title,
+    color: Colors.heavyGray,
+    textAlign: "center",
+  },
+  addDescription: {
+    fontSize: 16,
+    fontFamily: Fonts.body,
+    color: Colors.heavyGray,
+    textAlign: "center",
+  },
+  addImg: {
+    height: 200,
+    width: 200,
+  },
+
+  newsInner: {
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.lighterGray,
+  },
+
   eventInner: {
     flex: 1,
     paddingHorizontal: 10,
@@ -167,7 +258,6 @@ const styles = StyleSheet.create({
     borderRadius: 9001,
   },
   additionalNews: {
-    height: 300,
-    width: "100%"
+    width: "100%",
   },
 });
