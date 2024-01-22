@@ -24,7 +24,7 @@ const News = ({ style }: propTypes) => {
   const [isTouching, setIsTouching] = useState(false);
 
   useEffect(() => {
-    if (isTouching && scrollY < 0) {
+    if (isTouching && scrollY < -40) {
       console.log("overScroll-up");
     }
   }, [scrollY]);
