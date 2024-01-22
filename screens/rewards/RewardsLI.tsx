@@ -89,7 +89,6 @@ const RewardsLI = () => {
             style={{
               width: parentDimensions.width,
               height: parentDimensions.height,
-              backgroundColor: Colors.canaryYellow,
             }}
             key={`Screen-${pages[3]}`}
           />,

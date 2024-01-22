@@ -7,7 +7,7 @@ const Colors = {
   textLight:'#E2F5F7', // paleAqua
 
   //greys
-  
+  nearlyWhite: '#eef2fb',
   lighterGray: '#eceef3',
   lightGrey: '#cfd1da',
   softGray: '#a3a9c0',
@@ -15,6 +15,7 @@ const Colors = {
   heavyGray: '#626473',
   darkGray: '#484A5A',
   darkerGrey: '#3D3F4D',
+  deepGray: '#1f1f26',
   Black: '#01050c',
 
 

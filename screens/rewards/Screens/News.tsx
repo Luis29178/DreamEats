@@ -103,7 +103,14 @@ const News = ({ style }: propTypes) => {
                 ]}
               >
                 <View style={styles.newsInner}>
-                  <Text style={styles.addTitle}>{`${data.name}`}</Text>
+                  <Text
+                    style={[
+                      styles.addTitle,
+                      index % 2 !== 0
+                        ? { color: Colors.primary }
+                        : { color: Colors.lavenderBlue },
+                    ]}
+                  >{`${data.name}`}</Text>
 
                   {data.image !== "" ? (
                     <Image style={styles.addImg} />
@@ -147,7 +154,6 @@ const styles = StyleSheet.create({
   addTitle: {
     fontSize: 22,
     fontFamily: Fonts.title,
-    color: Colors.heavyGray,
     textAlign: "center",
   },
   addDescription: {
@@ -183,18 +189,18 @@ const styles = StyleSheet.create({
   eventTitle: {
     fontSize: 40,
     fontFamily: Fonts.title,
-    color: Colors.heavyGray,
+    color: Colors.primary,
     textAlign: "center",
   },
   eventSpacer: {
     fontSize: 36,
     fontFamily: Fonts.title,
-    color: Colors.heavyGray,
+    color: Colors.primary,
   },
   eventName: {
     fontSize: 26,
     fontFamily: Fonts.title,
-    color: Colors.heavyGray,
+    color: Colors.primary,
   },
   eventDate: {
     fontSize: 12,
