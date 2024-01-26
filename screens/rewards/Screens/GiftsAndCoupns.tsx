@@ -11,7 +11,7 @@ type propTypes = {
 
 const GiftsAndCoupons = ({ style }: propTypes) => {
   return (
-    <View style={style}>
+    <View style={[style, {overflow: 'hidden'}]}>
       <StatusBar style="dark" />
       <View style={styles.segmentTop}>
         <View style={styles.iconContainer}>

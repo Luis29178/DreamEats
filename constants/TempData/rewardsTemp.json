@@ -1,0 +1,97 @@
+{
+  "rewards": {
+    "generalRewards": {
+      "200-400 Points": [
+        {
+          "name": "Drink",
+          "pointCost": 300,
+          "img": "@/assets/images/tempRewardImg.png"
+        },
+        {
+          "name": "Free Side",
+          "pointCost": 400,
+          "img": "@/assets/images/tempRewardImg.png"
+        }
+      ],
+      "500-800 Points": [
+        {
+          "name": "Brownie",
+          "pointCost": 500,
+          "img": "@/assets/images/tempRewardImg.png"
+        },
+        {
+          "name": "Ice Cream",
+          "pointCost": 500,
+          "img": "@/assets/images/tempRewardImg.png"
+        },
+        {
+          "name": "5% Discount Coupon",
+          "pointCost": 750,
+          "img": "@/assets/images/tempRewardImg.png"
+        },
+        {
+          "name": "Free Shipping Voucher",
+          "pointCost": 800,
+          "img": "@/assets/images/tempRewardImg.png"
+        }
+      ],
+      "900-1200 Points": [
+        {
+          "name": "Free Appetiser",
+          "pointCost": 900,
+          "img": "@/assets/images/tempRewardImg.png"
+        },
+        {
+          "name": "Milk Shake",
+          "pointCost": 1200,
+          "img": "@/assets/images/tempRewardImg.png"
+        }
+      ],
+      "1300-1600 Points": [
+        {
+          "name": "15% Discount Coupon",
+          "pointCost": 1500,
+          "img": "@/assets/images/tempRewardImg.png"
+        },
+        {
+          "name": "10% Discount Coupon",
+          "pointCost": 1000,
+          "img": "@/assets/images/tempRewardImg.png"
+        }
+      ],
+      "1700+ Points": [
+        {
+          "name": "BOGO",
+          "pointCost": 2000,
+          "img": "@/assets/images/tempRewardImg.png"
+        }
+      ]
+    },
+    "vipTier": {
+      "name": "VIP",
+      "pointsRequired": 3000,
+      "items": [
+        {
+            "name": "BOGO-VIP",
+            "pointCost": 1750,
+            "img": "@/assets/images/tempRewardImg.png"
+          },
+        {
+          "name": "30% Discount Coupon",
+          "pointCost": 2500,
+          "img": "@/assets/images/tempRewardImg.png"
+        },
+        {
+          "name": "Events Seat",
+          "pointCost": 6000,
+          "img": "@/assets/images/tempRewardImg.png"
+        },
+        {
+          "name": "Exclusive VIP Events Seat",
+          "pointCost": 8000,
+          "img": "@/assets/images/tempRewardImg.png"
+        }
+      ]
+    }
+  }
+}
