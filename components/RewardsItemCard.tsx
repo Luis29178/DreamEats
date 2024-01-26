@@ -26,9 +26,8 @@ export default RewardsItemCard;
 const styles = StyleSheet.create({
   rewardContainer: {
     height: 140,
-    width: 125,
+    width: 115,
     backgroundColor: Colors.nearlyWhite,
-    marginRight: 10,
     padding: 5,
     borderRadius: 10,
   },

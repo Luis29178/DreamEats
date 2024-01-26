@@ -22,6 +22,7 @@ type propTypes = {
 const News = ({ style }: propTypes) => {
   const [scrollY, setScrollY] = useState(0);
   const [isTouching, setIsTouching] = useState(false);
+  const [hasAddNews, setHasAddNews] = useState(false)
 
   useEffect(() => {
     if (isTouching && scrollY < -40) {
@@ -90,7 +91,9 @@ const News = ({ style }: propTypes) => {
             </View>
           </View>
         </View>
-        <View style={styles.additionalNews}>
+
+
+       {hasAddNews ? <View style={styles.additionalNews}>
           {news.map((data, index) => {
             return (
               <View
@@ -124,7 +127,7 @@ const News = ({ style }: propTypes) => {
               </View>
             );
           })}
-        </View>
+        </View> : <></>}
         <View style={{ height: 100 }} />
       </ScrollView>
     </View>

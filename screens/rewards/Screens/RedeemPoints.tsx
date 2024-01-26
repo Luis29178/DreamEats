@@ -7,7 +7,7 @@ import {
   View,
   Image,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Colors } from "@/constants/Colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Fonts } from "@/constants/Fonts";
@@ -29,6 +29,7 @@ const pointCategories = [
 ];
 
 const RedeemPoints = ({ style }: propTypes) => {
+  const [isVIP, setIsVIP] = useState(false);
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <ImageBackground
@@ -77,69 +78,61 @@ const RedeemPoints = ({ style }: propTypes) => {
         </View>
       </ImageBackground>
 
-      <View style={[styles.rewardsList, {width: style.width}]}>
-
-
+      <View style={[styles.rewardsList, { width: style.width }]}>
         <View>
-        <Text style={styles.rewardCategoryTitle}>200 - 400 Points</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {data.rewards.generalRewards["200-400 Points"].map(
-            (reward, index) => (
-              <RewardsItemCard key={index} reward={reward} />
-            )
-          )}
-        </ScrollView>
-        <Text style={styles.rewardCategoryTitle}>500 - 800 Points</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {data.rewards.generalRewards["500-800 Points"].map(
-            (reward, index) => (
-              <RewardsItemCard key={index} reward={reward} />
-            )
-          )}
-        </ScrollView>
+          <Text style={styles.rewardCategoryTitle}>200 - 400 Points</Text>
+          <View style={[styles.gridContainer, { width: style.width }]}>
+            {data.rewards.generalRewards["200-400 Points"].map(
+              (reward, index) => (
+                <RewardsItemCard key={index} reward={reward} />
+              )
+            )}
+          </View>
+          <Text style={styles.rewardCategoryTitle}>500 - 800 Points</Text>
+          <View style={[styles.gridContainer, { width: style.width }]}>
+            {data.rewards.generalRewards["500-800 Points"].map(
+              (reward, index) => (
+                <RewardsItemCard key={index} reward={reward} />
+              )
+            )}
+          </View>
 
-        <Text style={styles.rewardCategoryTitle}>900 - 1200 Points</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {data.rewards.generalRewards["900-1200 Points"].map(
-            (reward, index) => (
-              <RewardsItemCard key={index} reward={reward} />
-            )
-          )}
-        </ScrollView>
+          <Text style={styles.rewardCategoryTitle}>900 - 1200 Points</Text>
+          <View style={[styles.gridContainer, { width: style.width }]}>
+            {data.rewards.generalRewards["900-1200 Points"].map(
+              (reward, index) => (
+                <RewardsItemCard key={index} reward={reward} />
+              )
+            )}
+          </View>
 
-        <Text style={styles.rewardCategoryTitle}>1300 - 1600 Points</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {data.rewards.generalRewards["1300-1600 Points"].map(
-            (reward, index) => (
-              <RewardsItemCard key={index} reward={reward} />
-            )
-          )}
-        </ScrollView>
+          <Text style={styles.rewardCategoryTitle}>1300 - 1600 Points</Text>
+          <View style={[styles.gridContainer, { width: style.width }]}>
+            {data.rewards.generalRewards["1300-1600 Points"].map(
+              (reward, index) => (
+                <RewardsItemCard key={index} reward={reward} />
+              )
+            )}
+          </View>
 
-        <Text style={styles.rewardCategoryTitle}>1700+ Points</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {data.rewards.generalRewards["1700+ Points"].map(
-            (reward, index) => (
-              <RewardsItemCard key={index} reward={reward} />
-            )
-          )}
-        </ScrollView>
-
+          <Text style={styles.rewardCategoryTitle}>1700+ Points</Text>
+          <View style={[styles.gridContainer, { width: style.width }]}>
+            {data.rewards.generalRewards["1700+ Points"].map(
+              (reward, index) => (
+                <RewardsItemCard key={index} reward={reward} />
+              )
+            )}
+          </View>
         </View>
 
-
-        <View>
-        <Text style={styles.rewardCategoryTitleVIP}>Vip Members Rewards</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {data.rewards.vipTier.items.map(
-            (reward, index) => (
+        <View style={isVIP ? {} : { opacity: 0.5, pointerEvents: "none" }}>
+          <Text style={styles.rewardCategoryTitleVIP}>Vip Members Rewards</Text>
+          <View style={[styles.gridContainer, { width: style.width }]}>
+            {data.rewards.vipTier.items.map((reward, index) => (
               <RewardsItemCard key={index} reward={reward} />
-            )
-          )}
-        </ScrollView>
-
+            ))}
+          </View>
         </View>
-
       </View>
     </ScrollView>
   );
@@ -148,6 +141,11 @@ const RedeemPoints = ({ style }: propTypes) => {
 export default RedeemPoints;
 
 const styles = StyleSheet.create({
+  gridContainer: {
+    flexDirection: "row", // Arranges children in a row
+    flexWrap: "wrap", // Allows items to wrap to the next line
+    gap: 10,
+  },
   rewardCategoryTitle: {
     marginTop: 15,
     fontSize: 26,
@@ -159,7 +157,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     fontSize: 26,
     fontFamily: Fonts.subBody,
-    color: '#ff4444',
+    color: "#ff4444",
     marginBottom: 10,
   },
 
