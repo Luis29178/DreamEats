@@ -37,13 +37,11 @@ const AccountLI = () => {
       </View>
       <View style={styles.accountOptions}>
         
-          <AccountOptionTouchable link="" OptionText={"Edit Profile"} />
+          <AccountOptionTouchable link="../(accountTabs)/editprofile" OptionText={"Edit Profile"} />
       
-          <AccountOptionTouchable link="" OptionText={"Payment Methods"} />
+          <AccountOptionTouchable link="../(accountTabs)/paymentmethods" OptionText={"Payment Methods"} />
 
-          <AccountOptionTouchable link="" OptionText={"Saved Adresses"} />
-
-          <AccountOptionTouchable link="" OptionText={"Edit Profile"} />
+          <AccountOptionTouchable link="../(accountTabs)/savedadresses" OptionText={"Saved Adresses"} />
 
           <AccountOptionTouchable link="" OptionText={"Sign Out"} />
 
