@@ -1,16 +1,16 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
+import { Fonts } from "@/constants/Fonts";
+import { Colors } from "@/constants/Colors";
 type propTypes = {
-  title: string;
+  title?: string;
   defaultText: string;
-  counter?: number;
   maxLength?: number;
   showCounter: boolean;
 };
 const ProfileTextInput = ({
   title,
   defaultText,
-  counter,
   maxLength,
   showCounter,
 }: propTypes) => {
@@ -18,12 +18,23 @@ const ProfileTextInput = ({
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.textInput}
-        defaultValue={defaultText}
-        onChangeText={(text) => setInputText(text)}
-        maxLength={maxLength}
-      />
+      <View style={styles.inputContainer}>
+        {title ? (
+          <View style={styles.titleContainer}>
+            <Text style={styles.titleText}>{title}</Text>
+          </View>
+        ) : (
+          <></>
+        )}
+
+        <TextInput
+          style={styles.textInput}
+          defaultValue={defaultText}
+          onChangeText={(text) => setInputText(text)}
+          maxLength={maxLength}
+        />
+      </View>
+
       {showCounter ? (
         <Text style={styles.charCount}>
           {maxLength !== undefined
@@ -41,17 +52,28 @@ export default ProfileTextInput;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    
+  },
+  inputContainer: {
+    padding: 12,
+    borderWidth: 1,
+    borderColor: Colors.darkGrey,
+    borderRadius: 6,
   },
   textInput: {
-    height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
-    marginBottom: 10,
-    padding: 10,
+    fontSize: 18,
+    fontFamily: Fonts.body,
+    fontWeight: "400",
   },
   charCount: {
     textAlign: "right",
     color: "gray",
+  },
+  titleContainer: {
+    marginBottom: 6,
+  },
+  titleText: {
+    fontSize: 12,
+    color: Colors.grey,
   },
 });

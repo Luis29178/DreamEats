@@ -8,14 +8,14 @@ const Colors = {
 
   //greys
   nearlyWhite: '#eef2fb',
-  lighterGray: '#eceef3',
+  lighterGrey: '#eceef3',
   lightGrey: '#cfd1da',
-  softGray: '#a3a9c0',
-  gray: '#71758D',
-  heavyGray: '#626473',
-  darkGray: '#484A5A',
+  softGrey: '#a3a9c0',
+  grey: '#71758D',
+  heavyGrey: '#626473',
+  darkGrey: '#484A5A',
   darkerGrey: '#3D3F4D',
-  deepGray: '#1f1f26',
+  deepGrey: '#1f1f26',
   Black: '#01050c',
 
 
