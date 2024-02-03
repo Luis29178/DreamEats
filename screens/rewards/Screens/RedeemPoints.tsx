@@ -33,7 +33,7 @@ const RedeemPoints = ({ style }: propTypes) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <ImageBackground
-        style={{ overflow: "hidden" }}
+        style={{ }}
         source={require("@/assets/images/DreamCityLogo-bg-pattern.png")} // Replace with your image path
         resizeMode="cover"
         imageStyle={{ left: -4 }}
