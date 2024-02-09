@@ -6,6 +6,7 @@ import { Colors } from "@/constants/Colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AccountOptionTouchable from "@/components/AccountOptionTouchable";
 import { Link } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 
 const AccountLI = () => {
   const [hasPFP, setHasPFp] = useState(true);
@@ -46,6 +47,8 @@ const AccountLI = () => {
           <AccountOptionTouchable link="" OptionText={"Sign Out"} />
 
       </View>
+
+      <StatusBar style="dark"/>
     </View>
   );
 };

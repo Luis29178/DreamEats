@@ -12,6 +12,7 @@ import News from "./Screens/News";
 import MyStats from "./Screens/MySatus";
 import GiftsAndCoupons from "./Screens/GiftsAndCoupns";
 import RedeemPoints from "./Screens/RedeemPoints";
+import { StatusBar } from "expo-status-bar";
 
 const pages = ["News", "Redeem Points", "My Status", "Gifts & Coupons"];
 
@@ -101,6 +102,7 @@ const RewardsLI = () => {
           
         ]}
       />
+      <StatusBar style="dark"/>
     </View>
   );
 };

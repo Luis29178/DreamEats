@@ -21,7 +21,6 @@ const AccountLO = () => {
       resizeMode="cover" // or "contain", depending on what you need
       style={styles.backgroundImage}
     >
-      <StatusBar style="dark" />
       <View style={styles.container}>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>Edit & Save Account Setting</Text>
@@ -41,6 +40,7 @@ const AccountLO = () => {
           </Link>
         </View>
       </View>
+      <StatusBar style="dark"/>
     </ImageBackground>
   );
 };

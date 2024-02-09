@@ -72,6 +72,7 @@ export default function Menu() {
 
         </View>
       </View>
+      <StatusBar style="light"/>
     </ImageBackground>
   );
 }

@@ -66,7 +66,7 @@ function RootLayoutNav() {
       />
       <Stack.Screen
         name="(accountTabs)/savedadresses"
-        options={{ presentation: "modal", headerTitle: "Saved Adresses" }}
+        options={{ presentation: "fullScreenModal", headerTitle: "Saved Adresses", headerShown: false }}
       />
     </Stack>
   );

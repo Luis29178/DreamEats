@@ -42,6 +42,7 @@ const RewardsLO = ({handleLogIn} : propTypes) => {
         />
       </TouchableOpacity>
     </View>
+    <StatusBar style="dark"/>
   </View>
   )
 }
